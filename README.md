@@ -4,7 +4,7 @@ Welcome to the online food order app. This app allows you to browse and order va
 # GET STARTED😯
 Clone the repo or fork it
 ```
-git clone url
+git clone https://github.com/ENG-CJ/Online-Food-Order-App.git
 ```
 
 Create Meaningful Branch 
