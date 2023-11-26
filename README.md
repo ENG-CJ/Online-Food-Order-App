@@ -4,7 +4,7 @@ Welcome to the online food order app. This app allows you to browse and order va
 # GET STARTED😯
 Clone the repo or fork it
 ```
-git clone url
+git clone https://github.com/ENG-CJ/Online-Food-Order-App.git
 ```
 
 Create Meaningful Branch 
@@ -23,6 +23,13 @@ git checkout <branch_name>
 - Write clear and concise documentation for your changes.
 - Test your changes: Before you submit a pull request, please make sure to test your changes thoroughly. This will help to ensure that your changes do not introduce any new bugs.
 - Open an issue before starting work : If you are planning to work on a new feature or fix a bug, please open an issue first to discuss your plans with the team. This will help to avoid duplicating work and ensure that your changes are aligned with the project's goals.
+
+
+# Primary Tools And Frameworks
+✅ Flutter 
+✅ Hive (Simple Local DB Management)
+✅ Nodejs (if needed)
+✅ Other Tools 
 
 # Folder Structure 🔥
 lib:
