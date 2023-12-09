@@ -5,6 +5,9 @@ import 'package:online_food_order_app/pages/Login/login_page.dart';
 import 'package:online_food_order_app/pages/Menu/nenu.details.dart';
 import 'package:online_food_order_app/util/theme/theme.dart';
 
+import './pages/profile.dart';
+
+
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: colors['primary']));
@@ -23,5 +26,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         home:  MenuDetails());
+    );
   }
 }
