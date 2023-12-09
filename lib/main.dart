@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:online_food_order_app/const/colors.dart';
+import './pages/profile.dart';
+
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -17,9 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: Scaffold(
-        body: Center(child: TextButton(child: Text("Let's Start 😑👋"),onPressed: (){}),),
-      ),
+      home: profile(),
     );
   }
 }
