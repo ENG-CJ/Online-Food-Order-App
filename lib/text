@@ -1,0 +1,78 @@
+ Padding(
+              padding: const EdgeInsets.only(left: 14, right: 10, top: 6),
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                width: double.maxFinite,
+                decoration: BoxDecoration(color: Colors.red),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2),
+
+                    itemBuilder: (_,index){
+                      return Container(
+                        width: 160,
+                        height: 240,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+
+                              BoxShadow(
+                                color: Color(0xFFdfdcdc).withOpacity(1),
+                                offset: Offset(0, 0),
+                                blurRadius: 26,
+                                spreadRadius: 3,
+                              ),
+
+                            ]
+                        ),
+                        child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 10,
+                                    top: 8
+                                ),
+                                child: Align(
+                                  alignment: Alignment.topRight,
+                                  child: Icon(Icons.favorite),
+                                ),
+                              ),
+                              CircleAvatar( radius: 50,
+                                backgroundImage: AssetImage("asset/one.jpg",
+                                ),
+                              ),
+                              SizedBox(height: 7,),
+                              Text("Ice Cream",
+                                style: TextStyle(
+                                    fontSize: 19,
+                                    fontFamily: "Poppins Bold"
+                                ),),
+                              Text("Angela ice",
+                                style: TextStyle(
+                                    fontSize: 17,
+                                    fontFamily: "Poppins Light"
+                                ),),
+                              SizedBox(height: 7,),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 6),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text("\$10", style: TextStyle(
+                                        fontSize: 19,
+                                        fontFamily: "Poppins Bold"
+                                    ),),
+                                    SizedBox(width: 30,),
+                                    Icon(Icons.shopping_cart,size:30,color: colors['primary'],)
+                                  ],
+                                ),
+                              ),
+
+                            ]
+                        ),
+                      );
+                    }),
+              ),
+            )
