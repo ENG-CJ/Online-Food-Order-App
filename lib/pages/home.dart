@@ -2,6 +2,7 @@ import 'package:cool_alert/cool_alert.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -13,6 +14,7 @@ import 'package:online_food_order_app/pages/favorites.dart';
 import 'package:online_food_order_app/pages/my_cart.dart';
 import 'package:online_food_order_app/pages/product_lists.dart';
 import 'package:online_food_order_app/pages/profile.dart';
+import 'package:online_food_order_app/pages/your_orders.dart';
 import 'package:online_food_order_app/storage/local_storage.dart';
 import 'package:online_food_order_app/util/button.dart';
 import 'package:online_food_order_app/util/food_card.dart';
@@ -338,15 +340,15 @@ setState(() {
           ),
         ),
       );
-
     return Text("No Cateogries Data Found");
   }
 
+  int index=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: colors['body-color'],
-      body: loadingData ? Center(child: CircularProgressIndicator(),): hasError?    InfoContent(description: error, btnText: "Reload",click: (){
+      body: index==0? loadingData ? Center(child: CircularProgressIndicator(),): hasError?    InfoContent(description: error, btnText: "Reload",click: (){
       getFoods();
     },):  ModalProgressHUD(
         inAsyncCall: loadingData,
@@ -489,9 +491,14 @@ setState(() {
             ],
           ),
         ),
-      ),
+      ) : YourOrders(),
       bottomNavigationBar: CurvedNavigationBar(
-        index: 1,
+        onTap: (newIndex){
+          setState(() {
+            index=newIndex;
+          });
+        },
+        index: index,
         color: colors['primary'] as Color,
         backgroundColor: Colors.white,
         buttonBackgroundColor: colors['primary']!.withOpacity(0.74),
@@ -500,12 +507,9 @@ setState(() {
             Icons.home,
             color: Colors.white,
           ),
+
           Icon(
-            Icons.person,
-            color: Colors.white,
-          ),
-          Icon(
-            Icons.shopping_cart,
+            FontAwesomeIcons.shop,
             color: Colors.white,
           ),
         ],

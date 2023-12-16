@@ -51,6 +51,8 @@ class _MenuDetailsState extends State<MenuDetails> {
     }
     return isExist;
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

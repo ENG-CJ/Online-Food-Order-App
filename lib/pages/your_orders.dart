@@ -83,6 +83,16 @@ class _YourOrdersState extends State<YourOrders> {
        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>Home()), (route) => false);
       },);
   }
+
+  void checkNavigationStack(BuildContext context) {
+    bool isNotEmpty = Navigator.of(context).canPop();
+
+    if (isNotEmpty) {
+      Navigator.pop(context);
+    } else {
+      return;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +106,7 @@ class _YourOrdersState extends State<YourOrders> {
               child: Row(
                 children: [
                   InkWell(
-                      onTap: ()=> Navigator.pop(context),
+                      onTap: ()=> checkNavigationStack(context),
                       child: FaIcon(FontAwesomeIcons.arrowLeft)),
                   SizedBox(width: 18,),
                   Text("My Orders",style: TextStyle(

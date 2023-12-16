@@ -4,7 +4,10 @@ class Validator{
     final RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     return emailRegex.hasMatch(email);
   }
-
+  bool containsOnlyNumbers(String input) {
+    final numeric = RegExp(r'^[0-9]+$');
+    return numeric.hasMatch(input);
+  }
   bool passLength(String password) {
     return password.length>=4;
   }

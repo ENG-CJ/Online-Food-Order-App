@@ -262,6 +262,20 @@ email=value;
                  );
                  return;
                }
+               if(!Validator().containsOnlyNumbers(mobile.toString())){
+                 CoolAlert.show(context: context, type: CoolAlertType.error,
+                   title: "Error",
+                   text: "Mobile must conatins only numeric values",
+                 );
+                 return;
+               }
+               if(!Validator().mobileLen(mobile.toString())){
+                 CoolAlert.show(context: context, type: CoolAlertType.error,
+                   title: "Error",
+                   text: "Mobile must be 9 or 10 digits",
+                 );
+                 return;
+               }
 
                var user = User(username: username, email: email, password: widget.user.password, mobile: mobile, address: address,user_id: widget.user.user_id);
                update(user).then((value){

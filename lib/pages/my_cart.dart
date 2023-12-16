@@ -8,6 +8,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:intl/intl.dart';
 import 'package:online_food_order_app/const/colors.dart';
 import 'package:online_food_order_app/pages/sucess_order.dart';
+import 'package:online_food_order_app/storage/local_storage.dart';
 import 'package:online_food_order_app/util/cart_card.dart';
 
 import '../const/url.dart';
@@ -25,7 +26,7 @@ class MyCart extends StatefulWidget {
 class _MyCartState extends State<MyCart> {
   var box = Hive.box("cart");
   var dio = Dio();
-var _valueControler=TextEditingController();
+  int id =0;
   List<Cart> cart = [];
   List<Order> orders=[];
   var isLoading = true;
@@ -61,7 +62,7 @@ var _valueControler=TextEditingController();
 
   Future<void> placeOrder()async{
     orders=cart.map((value) {
-      return Order(foodID: value.foodID, quantity: value.quantity, order_date: DateFormat("yyyy-MM-dd").format(DateTime.now()), total_amount: value.price);
+      return Order(custID: id,foodID: value.foodID, quantity: value.quantity, order_date: DateFormat("yyyy-MM-dd").format(DateTime.now()), total_amount: value.price);
     }).toList();
 
     var jsonData = orders.map((order){
@@ -85,13 +86,15 @@ var errorDescription='';
       }else{
         setState(() {
           hasError = false;
-
         });
       }
       
       print(res.data);
     }catch(e){
-      print(e);
+      setState(() {
+        hasError = true;
+        errorDescription=e.toString();
+      });
     }
   }
 
@@ -107,6 +110,12 @@ var errorDescription='';
         overAllTotal = calculateTotalPrice(cart);
       });
     });
+    LocalStorage().getId().then((value) {
+      print("current d is $value");
+      setState(() {
+        id=value!;
+      });
+    });
   }
 
   int calculateTotalPrice(List<Cart> cartItems) {
@@ -114,7 +123,7 @@ var errorDescription='';
     for (int i = 0; i < cartItems.length; i++) total += cart[i].price;
     return total;
   }
-  @override
+
 Widget buildCartList(List<Cart> cartLit){
     if(cartLit.length>0)
        return  ListView.builder(
@@ -193,7 +202,7 @@ Widget buildCartList(List<Cart> cartLit){
       ),
     );
 }
-  @override
+
   Widget buildTotal(List<Cart> cartLit){
     if(cartLit.length>0)
       return    Padding(
@@ -221,7 +230,7 @@ Widget buildCartList(List<Cart> cartLit){
     return SizedBox.shrink();
   }
 
-  @override
+
   Widget buildButton(List<Cart> cartLit){
     if(cartLit.length>0)
       return    Padding(
@@ -302,14 +311,19 @@ Widget buildCartList(List<Cart> cartLit){
                                         onClick: () {
 
                                           placeOrder().then((value){
-                                            if(hasError)
-                                              alert(context,title: Text("Error During Order"), content: Text(errorDescription));
-                                            else {
+
+                                            if(hasError) {
+                                              alert(context, title: Text(
+                                                  "Error During Order"),
+                                                  content: Text(
+                                                      errorDescription));
+                                              return;
+                                            }
 
                                               Navigator.pop(context);
                                               box.clear();
                                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>SuccessOrder()));
-                                            }
+
                                           });
 
 
@@ -382,6 +396,13 @@ Widget buildCartList(List<Cart> cartLit){
 
     return SizedBox.shrink();
   }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: colors['body-color'],

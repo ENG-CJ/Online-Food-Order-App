@@ -26,6 +26,8 @@ class _ProductListState extends State<ProductList> {
   var dio = Dio();
 
   var isLoading = true;
+  var hasError = false;
+  var errorDescr = '';
   var loadCategories = true;
   List<Foods> foods = [];
   var box = Hive.box("cart");
@@ -127,25 +129,42 @@ class _ProductListState extends State<ProductList> {
   }
 
   Future<void> getFoods() async {
+    setState(() {
+      loadCategories=true;
+    });
+
     try {
+      await Future.delayed(Duration(seconds: 1));
       Response response = await dio.post("$URL/foods/specificCategories", data: {"category": widget.category});
-print("read ${response.data}");
-      if (response.data['data'].length > 0) {
-        foods = (response.data['data'] as List)
-            .map((e) => Foods.fromJson(e))
-            .toList();
+
+      if(response.data['status']){
+        if (response.data['data'].length > 0) {
+          foods = (response.data['data'] as List)
+              .map((e) => Foods.fromJson(e))
+              .toList();
+        }
+        hasError=false;
+      }else{
+        hasError=true;
+        errorDescr=response.data['description'];
       }
 
-      isLoading = false;
+      loadCategories=false;
       setState(() {});
+      print("after state");
     } catch (e) {
+      print(e);
       print(" error $e ");
-      isLoading = false;
+      loadCategories = false;
+      hasError=true;
+      errorDescr=e.toString();
       setState(() {});
     }
   }
 
   Widget buildProductDetails(List<Foods> foods){
+    if(hasError)
+      return InfoContent(description: errorDescr,btnText: "Reload",click: ()=> getFoods(),);
     if(foods.length>0)
       return  Padding(
         padding: const EdgeInsets.only(top: 18,left: 8,right: 8,bottom: 30),
@@ -238,6 +257,7 @@ print("read ${response.data}");
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
+
             children: [
               Padding(
                 padding: const EdgeInsets.only(
@@ -264,6 +284,12 @@ print("read ${response.data}");
                   ],
                 ),
               ),
+              loadCategories? Padding(
+                padding: const EdgeInsets.only(
+                  top: 100
+                ),
+                child: Center(child: CircularProgressIndicator(),),
+              ) :
               buildProductDetails(foods)
             ],
           ),
