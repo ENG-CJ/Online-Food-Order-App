@@ -35,7 +35,7 @@ var _valueControler=TextEditingController();
       cart = box.keys.map((key) {
         var cartItem = box.get(key);
         return Cart(
-          foodID: cartItem['food_id'],
+            foodID: cartItem['food_id'],
             originalPrice: cartItem['original'],
             itemName: cartItem['foodName'],
             category: cartItem['cat'],
