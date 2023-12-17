@@ -33,6 +33,7 @@ class _LoginPageState extends State<LoginPage> {
   bool authenticating = false;
   bool logging = false;
   String errorDescr = "";
+  String status = "";
 
   var dio = Dio();
   Future<bool> authenticate() async {
@@ -55,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
             "pass": response.data['data'][0]['password'],
           });
           setState(() {
+            status=response.data['data'][0]['account_status'];
             hasError = false;
             logging = false;
             hasData = true;
@@ -581,6 +583,15 @@ class _LoginPageState extends State<LoginPage> {
                               setState(() {
                                 email= password="";
                               });
+                              return;
+                            }
+                            if(status.toLowerCase()=="block" || status.toLowerCase()=="blocked"){
+                              CoolAlert.show(
+                                  context: context,
+                                  type: CoolAlertType.error,
+                                  title: "Blocked Account",
+                                  text: "Your account has been banned, to fix this issue please contact our support team (hilaalfastfod@cook.so)");
+
                               return;
                             }
                             Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>Home()));
