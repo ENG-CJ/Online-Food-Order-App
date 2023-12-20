@@ -29,7 +29,14 @@ git checkout <branch_name>
 ✅ Flutter 
 ✅ Hive (Simple Local DB Management)
 ✅ Nodejs (if needed)
-✅ Other Tools 
+✅ Other Tools
+
+# Features
+[x] Admin Panel For Admins
+
+
+# All Configurations
+
 
 # Folder Structure 🔥
 lib:
