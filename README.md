@@ -49,20 +49,18 @@ Admins
 6.	Possess additional administrative privileges within the system.
 <br>
 Users
-1.	Utilize the application to place orders.
-2.	Interact with user-friendly screens such as "My Cart" and "My Favorites."
-3.	Edit personal profile data as required.
-4.	Engage in various user-related functionalities available within the application.
-
-
+1. Utilize the application to place orders.
+2. Interact with user-friendly screens such as "My Cart" and "My Favorites."
+3. Edit personal profile data as required.
+4. Engage in various user-related functionalities available within the application.
 
 
 # All Configurations
 
 **Database Configuration**
 <hr>
-1.	Create a database named <kbd>"fast_food_db"</kbd> in phpMyAdmin.
-2.	Import the database file into phpMyAdmin.
+- [x] Create a database named <kbd>"fast_food_db"</kbd> in phpMyAdmin.
+
 
 **Flutter Setup**
 <hr>
