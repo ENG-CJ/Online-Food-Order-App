@@ -32,7 +32,28 @@ git checkout <branch_name>
 ✅ Other Tools
 
 # Features
-[x] Admin Panel For Admins
+- [x] Admin Panel For Admins
+- [x] -	Application Panel for Customers or users
+- [x] -	Ordering Food  With Validators
+- [x] -	My Cart Features and My Favorites Feature
+- [x] -	Custom Validators
+- [x] -	Login and Forgot Passwords With Validations  and others
+
+# Supported Users
+Admins
+1.	Have access to the web panel.
+2.	Manage incoming requests and data within the system.
+3.	Can activate or deactivate orders and available food items.
+4.	Generate reports specifically related to orders.
+5.	Control users' activities such as blocking or activating accounts.
+6.	Possess additional administrative privileges within the system.
+Users
+1.	Utilize the application to place orders.
+2.	Interact with user-friendly screens such as "My Cart" and "My Favorites."
+3.	Edit personal profile data as required.
+4.	Engage in various user-related functionalities available within the application.
+
+
 
 
 # All Configurations
