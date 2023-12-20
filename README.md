@@ -57,28 +57,28 @@ Users
 
 # All Configurations
 
+
 **Database Configuration**
-<hr>
 1. Create a database named <kbd>"fast_food_db"</kbd> in phpMyAdmin.<br>
 2. Import the database file into phpMyAdmin.
 
-
-**Flutter Setup**
 <hr>
+**Flutter Setup**
+
 1.	Download the Flutter project.<br>
 2.	Run <kbd>flutter pub get</kbd> in the terminal to install required packages.<br>
 3.	Run the project on your emulator or physical device.<br>
 4.	Update the URL in url.dart located in <kbd>lib/const/url.dart</kbd> with your computer's IP address.
-
-**Node.js Configuration**
 <hr>
+**Node.js Configuration**
+
 1.	Download the Node.js project.<br>
 2.	Use <kbd>npm install</kbd> to install missing packages.<br>
 3.	Start the server using <kbd>npm start</kbd>.<br>
 4.	Test the server by accessing <kbd>your_address:4200/foods</kbd> endpoint.
-
-**PHP Admin Panel Setup**
 <hr>
+**PHP Admin Panel Setup**
+
 1.	Download the Admin Panel.<br>
 2.	Extract the files and copy them to your_xampp/htdocs directory.<br>
 3.	Before running, ensure you have imported the database file into phpMyAdmin.<br>
