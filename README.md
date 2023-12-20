@@ -47,6 +47,7 @@ Admins
 4.	Generate reports specifically related to orders.
 5.	Control users' activities such as blocking or activating accounts.
 6.	Possess additional administrative privileges within the system.
+<br>
 Users
 1.	Utilize the application to place orders.
 2.	Interact with user-friendly screens such as "My Cart" and "My Favorites."
@@ -57,6 +58,35 @@ Users
 
 
 # All Configurations
+
+**Database Configuration**
+<hr>
+1.	Create a database named <kbd>"fast_food_db"</kbd> in phpMyAdmin.
+2.	Import the database file into phpMyAdmin.
+
+**Flutter Setup**
+<hr>
+1.	Download the Flutter project.
+2.	Run <kbd>flutter pub get</kbd> in the terminal to install required packages.
+3.	Run the project on your emulator or physical device.
+4.	Update the URL in url.dart located in <kbd>lib/const/url.dart</kbd> with your computer's IP address.
+
+**Node.js Configuration**
+<hr>
+1.	Download the Node.js project.
+2.	Use <kbd>npm install</kbd> to install missing packages.
+3.	Start the server using <kbd>npm start</kbd>.
+4.	Test the server by accessing <kbd>your_address:4200/foods</kbd> endpoint.
+
+**PHP Admin Panel Setup**
+<hr>
+1.	Download the Admin Panel.
+2.	Extract the files and copy them to your_xampp/htdocs directory.
+3.	Before running, ensure you have imported the database file into phpMyAdmin.
+4.	Start the PHP admin panel
+
+
+
 
 
 # Folder Structure 🔥
